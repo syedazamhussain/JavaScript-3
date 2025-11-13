@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Even or Odd</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 30px 10px 10px 10px;
+            font-size: 45px;
+        }
+
+        .inputValue {
+            font-size: 22px;
+            border-radius: 18px;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .check {
+            padding: 10px;
+            border-radius: 50%;
+            margin: 10px 10px 10px 10px;
+            cursor: pointer;
+            font-size: 18px;
+            background-color: black;
+            color: whitesmoke;
+        }
+
+        .check:hover {
+            background-color: rgb(192, 192, 38);
+            color: black;
+
+        }
+
+        .result p {
+            font-size: 30px;
+            font-weight: 600;
+            color: #185a9d;
+            margin-top: 10px;
+            animation: faden 0.5s ease-in;
+        }
+
+        @keyframes faden {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Enter Number to Check Even or Odd
+        </h1>
+        <input type="text" class="inputValue" placeholder="Enter Number...">
+        <button class="check">Check</button>
+
+        <div class="result"></div>
+    </div>
+
+    <script>
+        let checkBtn = document.querySelector('.check');
+        let result = document.querySelector('.result');
+        let inputValue = document.querySelector('.inputValue');
+
+        function checkNum() {
+            let inputValue1 = document.querySelector('.inputValue').value.trim();
+            let inputValue2 = Number(inputValue1);
+
+            if (inputValue1.length === 0) {
+                result.innerHTML = `<p>Please Enter Number </p>`;
+                console.log(inputValue1)
+                return;
+            }
+
+            else if (inputValue2 % 2 === 0) {
+                result.innerHTML = ` <p> Even Number </p> `;
+            }
+            else if (inputValue2 % 2 !== 0 && !isNaN(inputValue2)) {
+                result.innerHTML = ` <p> Odd Number </p> `;
+            }
+            else {
+                result.innerHTML = ` <p> Its a Unique Value </p> `;
+            }
+        }
+        checkBtn.addEventListener('click', checkNum);
+
+        inputValue.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkNum();
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
