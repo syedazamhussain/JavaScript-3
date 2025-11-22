@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse an Array</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .userInput {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #9face6;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .userInput:focus {
+            border-color: #74ebd5;
+            box-shadow: 0 0 8px rgba(116, 235, 213, 0.6);
+        }
+
+        .submit {
+            background: #74ebd5;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit:hover {
+            background: #9face6;
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="wrapper">
+            <h1>Reverse an Array</h1>
+            <input type="text" class="userInput" placeholder="Enter array like [1,2,3,4]">
+            <button class="submit">Submit</button>
+            <div class="container"></div>
+        </div>
+
+        <script>
+            let container = document.querySelector('.container');
+            let submit = document.querySelector('.submit');
+
+            function rev() {
+                // user input string ko array me convert kiya JSOn ne (uska wahi kaam hai)
+                let userInput = document.querySelector('.userInput').value;
+                let arr = JSON.parse(userInput);   // "[1,2,3,4]" → [1,2,3,4]
+
+                // reverse logic
+                let left = 0, right = arr.length - 1;
+                while (left < right) {
+                    [arr[left], arr[right]] = [arr[right], arr[left]];
+                    left++;
+                    right--;
+                }
+
+                // DOM me show krna
+                container.innerHTML = arr.join(" ");
+                console.log(arr);
+
+                return arr;
+            }
+
+            submit.addEventListener('click', rev);
+
+            document.querySelector('.userInput').addEventListener('keydown',
+                e => { if (e.key === "Enter") rev(); });
+
+        </script>
+
+
+
+
+
+
+        </script>
+
+    </body>
+
+</html>
